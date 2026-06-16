@@ -8,7 +8,7 @@ def parse_machine(file_path):
     """Parse NDJSON Flutter test machine output"""
     tests = []
     try:
-        with open(file_path, 'r', encoding='utf-8') as f:
+        with open(file_path, 'r', encoding='utf-8-sig') as f:
             content = f.read().strip()
             if not content:
                 return tests

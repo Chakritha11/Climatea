@@ -1,0 +1,78 @@
+﻿{"protocolVersion":"0.1.1","runnerVersion":null,"pid":5736,"type":"start","time":0}
+{"suite":{"id":0,"platform":"vm","path":"C:/Users/chakr/Downloads/climatea/test/city_screen_test.dart"},"type":"suite","time":0}
+{"test":{"id":1,"name":"loading C:/Users/chakr/Downloads/climatea/test/city_screen_test.dart","suiteID":0,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":1}
+{"suite":{"id":2,"platform":"vm","path":"C:/Users/chakr/Downloads/climatea/test/climate_advisor_test.dart"},"type":"suite","time":8}
+{"test":{"id":3,"name":"loading C:/Users/chakr/Downloads/climatea/test/climate_advisor_test.dart","suiteID":2,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":8}
+{"suite":{"id":4,"platform":"vm","path":"C:/Users/chakr/Downloads/climatea/test/climate_score_service_test.dart"},"type":"suite","time":8}
+{"test":{"id":5,"name":"loading C:/Users/chakr/Downloads/climatea/test/climate_score_service_test.dart","suiteID":4,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":9}
+{"suite":{"id":6,"platform":"vm","path":"C:/Users/chakr/Downloads/climatea/test/loading_screen_test.dart"},"type":"suite","time":9}
+{"test":{"id":7,"name":"loading C:/Users/chakr/Downloads/climatea/test/loading_screen_test.dart","suiteID":6,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":9}
+{"suite":{"id":8,"platform":"vm","path":"C:/Users/chakr/Downloads/climatea/test/widget_test.dart"},"type":"suite","time":10}
+{"test":{"id":9,"name":"loading C:/Users/chakr/Downloads/climatea/test/widget_test.dart","suiteID":8,"groupIDs":[],"metadata":{"skip":false,"skipReason":null},"line":null,"column":null,"url":null},"type":"testStart","time":11}
+{"count":5,"time":12,"type":"allSuites"}
+
+[{"event":"test.startedProcess","params":{"vmServiceUri":null}}]
+
+[{"event":"test.startedProcess","params":{"vmServiceUri":null}}]
+
+[{"event":"test.startedProcess","params":{"vmServiceUri":null}}]
+
+[{"event":"test.startedProcess","params":{"vmServiceUri":null}}]
+{"testID":1,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":5331}
+{"group":{"id":10,"suiteID":0,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":4,"line":null,"column":null,"url":null},"type":"group","time":5338}
+{"group":{"id":11,"suiteID":0,"parentID":10,"name":"CityScreen Tests","metadata":{"skip":false,"skipReason":null},"testCount":4,"line":6,"column":3,"url":"file:///C:/Users/chakr/Downloads/climatea/test/city_screen_test.dart"},"type":"group","time":5339}
+{"test":{"id":12,"name":"CityScreen Tests CityScreen displays city input field","suiteID":0,"groupIDs":[10,11],"metadata":{"skip":false,"skipReason":null},"line":174,"column":5,"url":"package:flutter_test/src/widget_tester.dart","root_line":7,"root_column":5,"root_url":"file:///C:/Users/chakr/Downloads/climatea/test/city_screen_test.dart"},"type":"testStart","time":5339}
+{"testID":3,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":5349}
+{"group":{"id":13,"suiteID":2,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":6,"line":null,"column":null,"url":null},"type":"group","time":5350}
+{"group":{"id":14,"suiteID":2,"parentID":13,"name":"ClimateAdvisor Tests","metadata":{"skip":false,"skipReason":null},"testCount":6,"line":5,"column":3,"url":"file:///C:/Users/chakr/Downloads/climatea/test/climate_advisor_test.dart"},"type":"group","time":5352}
+{"test":{"id":15,"name":"ClimateAdvisor Tests buildAdvisory returns Unknown when weatherData is null","suiteID":2,"groupIDs":[13,14],"metadata":{"skip":false,"skipReason":null},"line":8,"column":5,"url":"file:///C:/Users/chakr/Downloads/climatea/test/climate_advisor_test.dart"},"type":"testStart","time":5352}
+{"testID":15,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":5433}
+{"test":{"id":16,"name":"ClimateAdvisor Tests buildAdvisory returns Low risk for good weather","suiteID":2,"groupIDs":[13,14],"metadata":{"skip":false,"skipReason":null},"line":15,"column":5,"url":"file:///C:/Users/chakr/Downloads/climatea/test/climate_advisor_test.dart"},"type":"testStart","time":5435}
+{"testID":16,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":5450}
+{"test":{"id":17,"name":"ClimateAdvisor Tests buildAdvisory returns High risk for extreme weather","suiteID":2,"groupIDs":[13,14],"metadata":{"skip":false,"skipReason":null},"line":41,"column":5,"url":"file:///C:/Users/chakr/Downloads/climatea/test/climate_advisor_test.dart"},"type":"testStart","time":5453}
+{"testID":17,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":5461}
+{"test":{"id":18,"name":"ClimateAdvisor Tests buildAdvisory supports all personas","suiteID":2,"groupIDs":[13,14],"metadata":{"skip":false,"skipReason":null},"line":65,"column":5,"url":"file:///C:/Users/chakr/Downloads/climatea/test/climate_advisor_test.dart"},"type":"testStart","time":5462}
+{"testID":18,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":5469}
+{"test":{"id":19,"name":"ClimateAdvisor Tests answerQuestion returns answer for valid question","suiteID":2,"groupIDs":[13,14],"metadata":{"skip":false,"skipReason":null},"line":91,"column":5,"url":"file:///C:/Users/chakr/Downloads/climatea/test/climate_advisor_test.dart"},"type":"testStart","time":5471}
+{"testID":19,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":5483}
+{"test":{"id":20,"name":"ClimateAdvisor Tests answerQuestion returns null answer when weatherData is null","suiteID":2,"groupIDs":[13,14],"metadata":{"skip":false,"skipReason":null},"line":119,"column":5,"url":"file:///C:/Users/chakr/Downloads/climatea/test/climate_advisor_test.dart"},"type":"testStart","time":5484}
+{"testID":20,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":5490}
+{"testID":5,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":5670}
+{"group":{"id":21,"suiteID":4,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":4,"line":null,"column":null,"url":null},"type":"group","time":5671}
+{"group":{"id":22,"suiteID":4,"parentID":21,"name":"ClimateScoreService Tests","metadata":{"skip":false,"skipReason":null},"testCount":4,"line":5,"column":3,"url":"file:///C:/Users/chakr/Downloads/climatea/test/climate_score_service_test.dart"},"type":"group","time":5671}
+{"test":{"id":23,"name":"ClimateScoreService Tests buildScore returns Unavailable when weatherData is null","suiteID":4,"groupIDs":[21,22],"metadata":{"skip":false,"skipReason":null},"line":8,"column":5,"url":"file:///C:/Users/chakr/Downloads/climatea/test/climate_score_service_test.dart"},"type":"testStart","time":5671}
+{"testID":23,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":5708}
+{"test":{"id":24,"name":"ClimateScoreService Tests buildScore calculates score for normal weather","suiteID":4,"groupIDs":[21,22],"metadata":{"skip":false,"skipReason":null},"line":15,"column":5,"url":"file:///C:/Users/chakr/Downloads/climatea/test/climate_score_service_test.dart"},"type":"testStart","time":5709}
+{"testID":24,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":5719}
+{"test":{"id":25,"name":"ClimateScoreService Tests buildScore returns High risk for extreme heat","suiteID":4,"groupIDs":[21,22],"metadata":{"skip":false,"skipReason":null},"line":48,"column":5,"url":"file:///C:/Users/chakr/Downloads/climatea/test/climate_score_service_test.dart"},"type":"testStart","time":5719}
+{"testID":25,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":5732}
+{"test":{"id":26,"name":"ClimateScoreService Tests buildScore returns score with all fields","suiteID":4,"groupIDs":[21,22],"metadata":{"skip":false,"skipReason":null},"line":68,"column":5,"url":"file:///C:/Users/chakr/Downloads/climatea/test/climate_score_service_test.dart"},"type":"testStart","time":5733}
+{"testID":26,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":5741}
+
+[{"event":"test.startedProcess","params":{"vmServiceUri":null}}]
+{"testID":7,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":6272}
+{"group":{"id":27,"suiteID":6,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":2,"line":null,"column":null,"url":null},"type":"group","time":6273}
+{"group":{"id":28,"suiteID":6,"parentID":27,"name":"LoadingScreen Tests","metadata":{"skip":false,"skipReason":null},"testCount":2,"line":6,"column":3,"url":"file:///C:/Users/chakr/Downloads/climatea/test/loading_screen_test.dart"},"type":"group","time":6273}
+{"test":{"id":29,"name":"LoadingScreen Tests LoadingScreen displays spinner","suiteID":6,"groupIDs":[27,28],"metadata":{"skip":false,"skipReason":null},"line":174,"column":5,"url":"package:flutter_test/src/widget_tester.dart","root_line":7,"root_column":5,"root_url":"file:///C:/Users/chakr/Downloads/climatea/test/loading_screen_test.dart"},"type":"testStart","time":6273}
+{"testID":9,"result":"success","skipped":false,"hidden":true,"type":"testDone","time":6569}
+{"group":{"id":30,"suiteID":8,"parentID":null,"name":"","metadata":{"skip":false,"skipReason":null},"testCount":4,"line":null,"column":null,"url":null},"type":"group","time":6570}
+{"group":{"id":31,"suiteID":8,"parentID":30,"name":"MyApp Widget Tests","metadata":{"skip":false,"skipReason":null},"testCount":4,"line":10,"column":3,"url":"file:///C:/Users/chakr/Downloads/climatea/test/widget_test.dart"},"type":"group","time":6571}
+{"test":{"id":32,"name":"MyApp Widget Tests App starts and loads without crashing","suiteID":8,"groupIDs":[30,31],"metadata":{"skip":false,"skipReason":null},"line":174,"column":5,"url":"package:flutter_test/src/widget_tester.dart","root_line":11,"root_column":5,"root_url":"file:///C:/Users/chakr/Downloads/climatea/test/widget_test.dart"},"type":"testStart","time":6571}
+{"testID":12,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":6711}
+{"test":{"id":33,"name":"CityScreen Tests CityScreen has back button","suiteID":0,"groupIDs":[10,11],"metadata":{"skip":false,"skipReason":null},"line":174,"column":5,"url":"package:flutter_test/src/widget_tester.dart","root_line":21,"root_column":5,"root_url":"file:///C:/Users/chakr/Downloads/climatea/test/city_screen_test.dart"},"type":"testStart","time":6711}
+{"testID":33,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":6829}
+{"test":{"id":34,"name":"CityScreen Tests CityScreen can enter city name","suiteID":0,"groupIDs":[10,11],"metadata":{"skip":false,"skipReason":null},"line":174,"column":5,"url":"package:flutter_test/src/widget_tester.dart","root_line":32,"root_column":5,"root_url":"file:///C:/Users/chakr/Downloads/climatea/test/city_screen_test.dart"},"type":"testStart","time":6829}
+{"testID":29,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":7157}
+{"test":{"id":35,"name":"LoadingScreen Tests LoadingScreen has correct background","suiteID":6,"groupIDs":[27,28],"metadata":{"skip":false,"skipReason":null},"line":174,"column":5,"url":"package:flutter_test/src/widget_tester.dart","root_line":21,"root_column":5,"root_url":"file:///C:/Users/chakr/Downloads/climatea/test/loading_screen_test.dart"},"type":"testStart","time":7159}
+{"testID":34,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":7198}
+{"test":{"id":36,"name":"CityScreen Tests CityScreen has Get Climate View button","suiteID":0,"groupIDs":[10,11],"metadata":{"skip":false,"skipReason":null},"line":174,"column":5,"url":"package:flutter_test/src/widget_tester.dart","root_line":47,"root_column":5,"root_url":"file:///C:/Users/chakr/Downloads/climatea/test/city_screen_test.dart"},"type":"testStart","time":7199}
+{"testID":35,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":7227}
+{"testID":36,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":7306}
+{"testID":32,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":7521}
+{"test":{"id":37,"name":"MyApp Widget Tests MyApp uses dark theme","suiteID":8,"groupIDs":[30,31],"metadata":{"skip":false,"skipReason":null},"line":174,"column":5,"url":"package:flutter_test/src/widget_tester.dart","root_line":22,"root_column":5,"root_url":"file:///C:/Users/chakr/Downloads/climatea/test/widget_test.dart"},"type":"testStart","time":7522}
+{"testID":37,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":7571}
+{"test":{"id":38,"name":"MyApp Widget Tests App has correct title","suiteID":8,"groupIDs":[30,31],"metadata":{"skip":false,"skipReason":null},"line":174,"column":5,"url":"package:flutter_test/src/widget_tester.dart","root_line":30,"root_column":5,"root_url":"file:///C:/Users/chakr/Downloads/climatea/test/widget_test.dart"},"type":"testStart","time":7571}
+{"testID":38,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":7613}
+{"test":{"id":39,"name":"MyApp Widget Tests App renders loading screen on startup","suiteID":8,"groupIDs":[30,31],"metadata":{"skip":false,"skipReason":null},"line":174,"column":5,"url":"package:flutter_test/src/widget_tester.dart","root_line":38,"root_column":5,"root_url":"file:///C:/Users/chakr/Downloads/climatea/test/widget_test.dart"},"type":"testStart","time":7613}
+{"testID":39,"result":"success","skipped":false,"hidden":false,"type":"testDone","time":7665}
+{"success":true,"type":"done","time":7703}
