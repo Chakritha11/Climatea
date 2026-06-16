@@ -96,14 +96,14 @@ def write_xlsx(events, out_path):
             if event_type == 'testDone':
                 # Map Flutter result values to pass/fail
                 if result == 'success':
-                    status = 'pass'
+                    status = 'PASS'
                     passed_count += 1
                 else:
-                    # any non-success (failure/error) is treated as fail
-                    status = 'fail'
+                    # any non-success (failure/error) is treated as FAIL
+                    status = 'FAIL'
                     failed_count += 1
             elif event_type == 'testError':
-                status = 'fail'
+                status = 'FAIL'
                 message = ev.get('error', '')
                 failed_count += 1
             else:
