@@ -91,24 +91,24 @@ def write_xlsx(events, out_path):
             hidden = ev.get('hidden', False)
             message = ''
             
-            # Determine status and message
+            # Determine status and message (map to 'pass' or 'fail')
             status = ''
             if event_type == 'testDone':
-                status = result if result else 'completed'
+                # Map Flutter result values to pass/fail
                 if result == 'success':
+                    status = 'pass'
                     passed_count += 1
-                elif result == 'error':
+                else:
+                    # any non-success (failure/error) is treated as fail
+                    status = 'fail'
                     failed_count += 1
             elif event_type == 'testError':
-                status = 'error'
+                status = 'fail'
                 message = ev.get('error', '')
                 failed_count += 1
-            elif event_type == 'testStart':
-                status = 'started'
-            elif event_type == 'start':
-                status = 'suite-started'
-            elif event_type == 'done':
-                status = 'suite-done'
+            else:
+                # For non-terminal events keep status empty
+                status = ''
             
             if ev.get('type') == 'print':
                 message = ev.get('message', '')[:500]  # Limit message length
