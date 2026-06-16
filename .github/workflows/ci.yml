@@ -40,13 +40,7 @@ jobs:
         run: flutter test --machine > test_results.json 2>&1 || true
 
       - name: Convert test results to Excel
-        run: |
-          if [ -f test_results.json ] && [ -s test_results.json ]; then
-            python tooling/convert_flutter_test_machine_to_xlsx.py test_results.json test_report.xlsx
-          else
-            echo "No test results found, creating empty report..."
-            python tooling/convert_flutter_test_machine_to_xlsx.py "{\"type\":\"done\"}" test_report.xlsx
-          fi
+        run: python tooling/convert_flutter_test_machine_to_xlsx.py test_results.json test_report.xlsx
 
       - name: Upload test report
         uses: actions/upload-artifact@v4
