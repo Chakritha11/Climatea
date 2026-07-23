@@ -1,4 +1,4 @@
-name: Scale E2E suites to 1800 test cases
+name: "Scale E2E suites to 1800 test cases"
 
 on:
   push:
@@ -14,28 +14,28 @@ permissions:
 
 jobs:
   selenium-tests:
-    name: 🌐 Selenium — Website Tests (300)
+    name: "🌐 Selenium — Website Tests (300)"
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Codebase
+      - name: "Checkout Codebase"
         uses: actions/checkout@v4
 
-      - name: Set up Python 3.11
+      - name: "Set up Python 3.11"
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Install Python Dependencies
+      - name: "Install Python Dependencies"
         run: |
           python -m pip install --upgrade pip
           pip install openpyxl
 
-      - name: Execute 300 Selenium Web Test Cases
+      - name: "Execute 300 Selenium Web Test Cases"
         run: |
           python tooling/qa_suite_runner.py --category selenium
 
-      - name: Upload Artifact: selenium-web-report
+      - name: "Upload Artifact - selenium-web-report"
         uses: actions/upload-artifact@v4
         with:
           name: selenium-web-report
@@ -44,28 +44,28 @@ jobs:
             selenium-web-report/
 
   appium-tests:
-    name: 📱 Appium — Android Tests (300)
+    name: "📱 Appium — Android Tests (300)"
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Codebase
+      - name: "Checkout Codebase"
         uses: actions/checkout@v4
 
-      - name: Set up Python 3.11
+      - name: "Set up Python 3.11"
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Install Python Dependencies
+      - name: "Install Python Dependencies"
         run: |
           python -m pip install --upgrade pip
           pip install openpyxl
 
-      - name: Execute 300 Appium Android Test Cases
+      - name: "Execute 300 Appium Android Test Cases"
         run: |
           python tooling/qa_suite_runner.py --category appium
 
-      - name: Upload Artifact: appium-android-report
+      - name: "Upload Artifact - appium-android-report"
         uses: actions/upload-artifact@v4
         with:
           name: appium-android-report
@@ -74,28 +74,28 @@ jobs:
             appium-android-report/
 
   api-unit-tests:
-    name: ⚙️ Unit Tests — API (300)
+    name: "⚙️ Unit Tests — API (300)"
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Codebase
+      - name: "Checkout Codebase"
         uses: actions/checkout@v4
 
-      - name: Set up Python 3.11
+      - name: "Set up Python 3.11"
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Install Python Dependencies
+      - name: "Install Python Dependencies"
         run: |
           python -m pip install --upgrade pip
           pip install openpyxl
 
-      - name: Execute 300 API Unit Test Cases
+      - name: "Execute 300 API Unit Test Cases"
         run: |
           python tooling/qa_suite_runner.py --category api
 
-      - name: Upload Artifact: unit-test-report
+      - name: "Upload Artifact - unit-test-report"
         uses: actions/upload-artifact@v4
         with:
           name: unit-test-report
@@ -104,28 +104,28 @@ jobs:
             unit-test-report/
 
   validation-tests:
-    name: ✅ Validation Tests (300)
+    name: "✅ Validation Tests (300)"
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Codebase
+      - name: "Checkout Codebase"
         uses: actions/checkout@v4
 
-      - name: Set up Python 3.11
+      - name: "Set up Python 3.11"
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Install Python Dependencies
+      - name: "Install Python Dependencies"
         run: |
           python -m pip install --upgrade pip
           pip install openpyxl
 
-      - name: Execute 300 Validation Rule Test Cases
+      - name: "Execute 300 Validation Rule Test Cases"
         run: |
           python tooling/qa_suite_runner.py --category validation
 
-      - name: Upload Artifact: validation-test-report
+      - name: "Upload Artifact - validation-test-report"
         uses: actions/upload-artifact@v4
         with:
           name: validation-test-report
@@ -134,28 +134,28 @@ jobs:
             validation-test-report/
 
   deployment-tests:
-    name: 🚀 Deployment Status (300)
+    name: "🚀 Deployment Status (300)"
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Codebase
+      - name: "Checkout Codebase"
         uses: actions/checkout@v4
 
-      - name: Set up Python 3.11
+      - name: "Set up Python 3.11"
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Install Python Dependencies
+      - name: "Install Python Dependencies"
         run: |
           python -m pip install --upgrade pip
           pip install openpyxl
 
-      - name: Execute 300 Deployment Test Cases
+      - name: "Execute 300 Deployment Test Cases"
         run: |
           python tooling/qa_suite_runner.py --category deployment
 
-      - name: Upload Artifact: deployment-test-report
+      - name: "Upload Artifact - deployment-test-report"
         uses: actions/upload-artifact@v4
         with:
           name: deployment-test-report
@@ -164,28 +164,28 @@ jobs:
             deployment-test-report/
 
   load-tests:
-    name: 📊 Load Testing — Performance (300)
+    name: "📊 Load Testing — Performance (300)"
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Codebase
+      - name: "Checkout Codebase"
         uses: actions/checkout@v4
 
-      - name: Set up Python 3.11
+      - name: "Set up Python 3.11"
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Install Python Dependencies
+      - name: "Install Python Dependencies"
         run: |
           python -m pip install --upgrade pip
           pip install openpyxl
 
-      - name: Execute 300 Load & Performance Test Cases
+      - name: "Execute 300 Load & Performance Test Cases"
         run: |
           python tooling/qa_suite_runner.py --category load
 
-      - name: Upload Artifact: load-test-report
+      - name: "Upload Artifact - load-test-report"
         uses: actions/upload-artifact@v4
         with:
           name: load-test-report
@@ -194,41 +194,41 @@ jobs:
             load-test-report/
 
   master-report:
-    name: 📦 Compile Master Report & Deploy
+    name: "📦 Compile Master Report & Deploy"
     needs: [selenium-tests, appium-tests, api-unit-tests, validation-tests, deployment-tests, load-tests]
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Codebase
+      - name: "Checkout Codebase"
         uses: actions/checkout@v4
 
-      - name: Set up Python 3.11
+      - name: "Set up Python 3.11"
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Install Python Dependencies
+      - name: "Install Python Dependencies"
         run: |
           python -m pip install --upgrade pip
           pip install openpyxl
 
-      - name: Set up Flutter SDK
+      - name: "Set up Flutter SDK"
         uses: subosito/flutter-action@v2
         with:
           flutter-version: '3.38.3'
           channel: 'stable'
 
-      - name: Flutter Dependencies
+      - name: "Flutter Dependencies"
         run: flutter pub get
 
-      - name: Build Flutter Web App
+      - name: "Build Flutter Web App"
         run: flutter build web --release || mkdir -p build/web
 
-      - name: Compile 1,800 Test Cases Master Excel & E2E Summary
+      - name: "Compile 1,800 Test Cases Master Excel & E2E Summary"
         run: |
           python tooling/qa_suite_runner.py --category compile
 
-      - name: Upload Artifact: full-e2e-report
+      - name: "Upload Artifact - full-e2e-report"
         uses: actions/upload-artifact@v4
         with:
           name: full-e2e-report
@@ -237,7 +237,7 @@ jobs:
             full-e2e-report/
             test_report.xlsx
 
-      - name: Upload Artifact: github-pages
+      - name: "Upload Artifact - github-pages"
         uses: actions/upload-artifact@v4
         with:
           name: github-pages
