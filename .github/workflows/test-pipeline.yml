@@ -235,6 +235,7 @@ jobs:
           path: |
             full-e2e-report.md
             full-e2e-report/
+            excel_reports/
             test_report.xlsx
 
       - name: "Upload Artifact - github-pages"

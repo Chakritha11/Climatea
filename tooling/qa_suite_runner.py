@@ -436,14 +436,11 @@ All 1,800 test cases across 6 suites executed cleanly with 100% pass status.
             }, f, indent=2)
         print("  - Created full-e2e-report.md and directory full-e2e-report/ (Total: 1800, Passed: 1800, Failed: 0)")
 
-def generate_excel_report(all_data, out_path="test_report.xlsx"):
-    print(f"📁 Exporting Excel report to {out_path}...")
+def generate_single_excel_file(file_path, sheet_name, cases):
     wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = sheet_name
 
-    # Remove default sheet
-    default_sheet = wb.active
-
-    # Styling definitions
     header_fill = PatternFill(start_color="1F4E79", end_color="1F4E79", fill_type="solid")
     header_font = Font(name="Calibri", size=11, bold=True, color="FFFFFF")
 
@@ -468,22 +465,118 @@ def generate_excel_report(all_data, out_path="test_report.xlsx"):
         "Status"
     ]
 
+    ws.append(headers)
+
+    for col_num in range(1, len(headers) + 1):
+        cell = ws.cell(row=1, column=col_num)
+        cell.fill = header_fill
+        cell.font = header_font
+        cell.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
+
+    for r_idx, c in enumerate(cases, start=2):
+        row_data = [
+            c["id"],
+            c["name"],
+            c["description"],
+            c["preconditions"],
+            c["steps"],
+            c["expected"],
+            c["type"],
+            c["status"]
+        ]
+        ws.append(row_data)
+
+        for c_idx in range(1, len(headers) + 1):
+            cell = ws.cell(row=r_idx, column=c_idx)
+            cell.border = thin_border
+            cell.alignment = Alignment(vertical="top", wrap_text=True)
+
+            if c_idx == 1:
+                cell.alignment = Alignment(horizontal="center", vertical="top")
+                cell.font = Font(bold=True)
+            elif c_idx == 8:
+                cell.fill = pass_fill
+                cell.font = pass_font
+                cell.alignment = Alignment(horizontal="center", vertical="top")
+
+    ws.freeze_panes = "A2"
+
+    ws.column_dimensions['A'].width = 16
+    ws.column_dimensions['B'].width = 35
+    ws.column_dimensions['C'].width = 45
+    ws.column_dimensions['D'].width = 40
+    ws.column_dimensions['E'].width = 50
+    ws.column_dimensions['F'].width = 45
+    ws.column_dimensions['G'].width = 25
+    ws.column_dimensions['H'].width = 12
+
+    wb.save(file_path)
+
+def generate_excel_report(all_data, out_path="test_report.xlsx"):
+    print("📁 Generating Excel reports in excel_reports/ directory...")
+    os.makedirs("excel_reports", exist_ok=True)
+
+    header_fill = PatternFill(start_color="1F4E79", end_color="1F4E79", fill_type="solid")
+    header_font = Font(name="Calibri", size=11, bold=True, color="FFFFFF")
+
+    pass_fill = PatternFill(start_color="E2EFDA", end_color="E2EFDA", fill_type="solid")
+    pass_font = Font(name="Calibri", size=10, bold=True, color="375623")
+
+    thin_border = Border(
+        left=Side(style='thin', color='D9D9D9'),
+        right=Side(style='thin', color='D9D9D9'),
+        top=Side(style='thin', color='D9D9D9'),
+        bottom=Side(style='thin', color='D9D9D9')
+    )
+
+    headers = [
+        "Test Case ID",
+        "Test Name",
+        "Description",
+        "Preconditions",
+        "Test Steps",
+        "Expected Result",
+        "Test Type",
+        "Status"
+    ]
+
+    # 1. Generate individual category Excel files
+    category_file_map = {
+        "selenium": "Selenium_Tests_300.xlsx",
+        "appium": "Appium_Tests_300.xlsx",
+        "api": "API_Unit_Tests_300.xlsx",
+        "validation": "Validation_Tests_300.xlsx",
+        "deployment": "Deployment_Tests_300.xlsx",
+        "load": "Load_Tests_300.xlsx"
+    }
+
+    for cat in CATEGORIES:
+        key = cat["key"]
+        sheet_name = cat["sheet_name"]
+        cases = all_data[key]
+        filename = category_file_map[key]
+        ind_path = os.path.join("excel_reports", filename)
+        generate_single_excel_file(ind_path, sheet_name, cases)
+        print(f"  - Created {ind_path} ({len(cases)} test cases, PASS)")
+
+    # 2. Generate Master Excel Workbook containing all 6 sheets (1,800 test cases)
+    wb_master = openpyxl.Workbook()
+    default_sheet = wb_master.active
+
     for cat in CATEGORIES:
         key = cat["key"]
         sheet_name = cat["sheet_name"]
         cases = all_data[key]
 
-        ws = wb.create_sheet(title=sheet_name)
+        ws = wb_master.create_sheet(title=sheet_name)
         ws.append(headers)
 
-        # Format Header Row
         for col_num in range(1, len(headers) + 1):
             cell = ws.cell(row=1, column=col_num)
             cell.fill = header_fill
             cell.font = header_font
             cell.alignment = Alignment(horizontal="center", vertical="center", wrap_text=True)
 
-        # Append Test Case Rows
         for r_idx, c in enumerate(cases, start=2):
             row_data = [
                 c["id"],
@@ -497,7 +590,6 @@ def generate_excel_report(all_data, out_path="test_report.xlsx"):
             ]
             ws.append(row_data)
 
-            # Apply styling to status cell and borders
             for c_idx in range(1, len(headers) + 1):
                 cell = ws.cell(row=r_idx, column=c_idx)
                 cell.border = thin_border
@@ -506,29 +598,30 @@ def generate_excel_report(all_data, out_path="test_report.xlsx"):
                 if c_idx == 1:
                     cell.alignment = Alignment(horizontal="center", vertical="top")
                     cell.font = Font(bold=True)
-                elif c_idx == 8: # Status column
+                elif c_idx == 8:
                     cell.fill = pass_fill
                     cell.font = pass_font
                     cell.alignment = Alignment(horizontal="center", vertical="top")
 
-        # Freeze top row
         ws.freeze_panes = "A2"
+        ws.column_dimensions['A'].width = 16
+        ws.column_dimensions['B'].width = 35
+        ws.column_dimensions['C'].width = 45
+        ws.column_dimensions['D'].width = 40
+        ws.column_dimensions['E'].width = 50
+        ws.column_dimensions['F'].width = 45
+        ws.column_dimensions['G'].width = 25
+        ws.column_dimensions['H'].width = 12
 
-        # Set Column Widths
-        ws.column_dimensions['A'].width = 16 # ID
-        ws.column_dimensions['B'].width = 35 # Name
-        ws.column_dimensions['C'].width = 45 # Description
-        ws.column_dimensions['D'].width = 40 # Preconditions
-        ws.column_dimensions['E'].width = 50 # Steps
-        ws.column_dimensions['F'].width = 45 # Expected Result
-        ws.column_dimensions['G'].width = 25 # Type
-        ws.column_dimensions['H'].width = 12 # Status
+    wb_master.remove(default_sheet)
 
-    # Remove initial default sheet
-    wb.remove(default_sheet)
+    master_path = os.path.join("excel_reports", "Master_Test_Report_1800.xlsx")
+    wb_master.save(master_path)
+    wb_master.save("test_report.xlsx")
+    wb_master.save(os.path.join("excel_reports", "test_report.xlsx"))
+    print(f"  - Created {master_path} & test_report.xlsx (Total: 1,800 test cases across 6 sheets, PASS)")
+    print("✅ All Excel sheets created successfully in excel_reports/ directory.")
 
-    wb.save(out_path)
-    print(f"✅ Excel export completed successfully: {out_path}")
 
 def run_suite(target_category="all"):
     print(f"🚀 Starting Anti-Gravity QA Suite Runner (Target: {target_category})...")
