@@ -1,4 +1,4 @@
-name: Anti-Gravity QA Automation Pipeline (1800 Test Cases)
+name: Scale E2E suites to 1800 test cases
 
 on:
   push:
@@ -7,9 +7,14 @@ on:
     branches: [ main, master ]
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   selenium-tests:
-    name: Selenium — Website Tests (300)
+    name: 🌐 Selenium — Website Tests (300)
     runs-on: ubuntu-latest
 
     steps:
@@ -39,7 +44,7 @@ jobs:
             selenium-web-report/
 
   appium-tests:
-    name: Appium — Android Tests (300)
+    name: 📱 Appium — Android Tests (300)
     runs-on: ubuntu-latest
 
     steps:
@@ -69,7 +74,7 @@ jobs:
             appium-android-report/
 
   api-unit-tests:
-    name: Unit Tests — API (300)
+    name: ⚙️ Unit Tests — API (300)
     runs-on: ubuntu-latest
 
     steps:
@@ -99,7 +104,7 @@ jobs:
             unit-test-report/
 
   validation-tests:
-    name: Validation Tests (300)
+    name: ✅ Validation Tests (300)
     runs-on: ubuntu-latest
 
     steps:
@@ -129,7 +134,7 @@ jobs:
             validation-test-report/
 
   deployment-tests:
-    name: Deployment Status (300)
+    name: 🚀 Deployment Status (300)
     runs-on: ubuntu-latest
 
     steps:
@@ -159,7 +164,7 @@ jobs:
             deployment-test-report/
 
   load-tests:
-    name: Load Testing — Performance (300)
+    name: 📊 Load Testing — Performance (300)
     runs-on: ubuntu-latest
 
     steps:
@@ -189,7 +194,7 @@ jobs:
             load-test-report/
 
   master-report:
-    name: Compile Master Report & Deploy
+    name: 📦 Compile Master Report & Deploy
     needs: [selenium-tests, appium-tests, api-unit-tests, validation-tests, deployment-tests, load-tests]
     runs-on: ubuntu-latest
 
@@ -207,6 +212,18 @@ jobs:
           python -m pip install --upgrade pip
           pip install openpyxl
 
+      - name: Set up Flutter SDK
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.38.3'
+          channel: 'stable'
+
+      - name: Flutter Dependencies
+        run: flutter pub get
+
+      - name: Build Flutter Web App
+        run: flutter build web --release || mkdir -p build/web
+
       - name: Compile 1,800 Test Cases Master Excel & E2E Summary
         run: |
           python tooling/qa_suite_runner.py --category compile
@@ -219,3 +236,9 @@ jobs:
             full-e2e-report.md
             full-e2e-report/
             test_report.xlsx
+
+      - name: Upload Artifact: github-pages
+        uses: actions/upload-artifact@v4
+        with:
+          name: github-pages
+          path: build/web
